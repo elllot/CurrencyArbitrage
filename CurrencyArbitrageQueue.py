@@ -6,6 +6,10 @@ from Scrape import scrape
 # See if I can implement string matching to parse user input to recommend 
 # correct input
 
+"""
+#	Method for Generating a graph from scraped data
+#
+"""
 def generate_graph():
 	rates, strs, keys = scrape()
 	graph, weights = defaultdict(set), {}
@@ -93,4 +97,6 @@ def relax(v, D, W, G, parents, queue, queued, calls):
 		calls += 1
 	return calls, None 
 
-arbitrage(1)
+if __name__ == '__main__':
+	# example usage
+	arbitrage(1)

@@ -82,4 +82,6 @@ def arbitrage(src, starting_amount):
 				return
 	print("no Arbitrage")
 	
-arbitrage(1, 1000)
+if __name__ == '__main__':
+	# example usage
+	arbitrage(1, 1000)
