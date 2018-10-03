@@ -2,6 +2,8 @@ from math import log, exp
 from collections import defaultdict
 from decimal import getcontext, Decimal
 from CurrencyDigraph import CurrencyDigraph
+import asyncio
+import argparse
 
 class AribitrageFinder:
 
@@ -85,6 +87,19 @@ class AribitrageFinder:
 		# no arbitrage found
 		print("no Arbitrage")
 	
+def entry_point(run_count):
+	parser = argparse.ArgumentParser()
+	parser.add_argument('-s', '--starting_amount')
+
+	args = parser.parse_args()
+	af = AribitrageFinder(args.starting_amount)
+	loop = asyncio.get_event_loop()
+	loop.run_until_complete(af.find_arbitrage())
+	try:
+		loop.run_forever()
+	except InterruptedError:
+		asyncio.asyncgens.shut_down()
+
 if __name__ == '__main__':
 	# example usage
 	#arbitrage(1, 1000)
