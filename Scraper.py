@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import urllib3
 import requests
+import asyncio
 
 class Scraper:
 	def __init__(self):
